@@ -36,7 +36,7 @@ if(isset($_POST["submit"])){
 		$email 	      = trim($_POST["email"]);
 		$phone        = trim($_POST["phone"]);	
 		$mobile       = trim($_POST["mobile"]);
-        $username    = trim($_POST["username"]);
+        $username     = trim($_POST["username"]);
 		$password     = trim($_POST["password"]);
         $re_password  = trim($_POST["re_password"]);
 	
@@ -85,37 +85,33 @@ if(isset($_POST["submit"])){
     
         try{
             require_once("../includes/db_connect.php");
-            
 
             $query = "SELECT * ";
             $query .= "FROM users ";
-            $query .= "WHERE username = :username "; 
+            $query .= "WHERE email = :email ";
+            $query .= "AND username = :username ";
 
             $ps = $db->prepare($query); 
             $result = $ps->execute(
                 array(
-                    'username'=>$username 
+                    'email'=>$email,
+                    'username'=>$username
                 ));
             $result = $ps->fetch(PDO::FETCH_ASSOC);
 
-                if($username){	
-                    if ($result ['username']== $username) {
-
-                        $_SESSION["username"] = $result['username'];
-
-                    $userErr = "Username already exist. Please create a new username.<br /><br />";
-
-                    } 
-                } 
                 if($email){	
                     if ($result ['email']== $email) {
-
                         $_SESSION["email"] = $result['email'];
-
-                    $emailErr = "Email already exist. Please create a new email.<br /><br />";
-
+                        $emailErr = "Email already exist. Please create a new email.<br /><br />";
                     } 
                 } 
+                if($username){	
+                    if ($result ['username']== $username) {
+                        $_SESSION["username"] = $result['username'];
+                        $userErr = "Username already exist. Please create a new username.<br /><br />";
+                    } 
+                } 
+                
 
         } catch(Exception $exception) {
             echo "Query failed, see error message below: <br /><br />";
