@@ -14,8 +14,8 @@
     <div class="main">
     <div class="account-container">
         <div class="content clearfix">
-        <h1>Lägg till användare</h1>
-    <p>Lägg till användare i Jensen Online. </p>
+        <h2>Lägg till användare</h2>
+    
     <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i>
 
 <?php
@@ -257,7 +257,7 @@ if(isset($_POST["submit"])){
             
         </table>
     </form>            
-       
+       <a href="minklass.php">Tillbaks till klasslistan</a>
 
     </div> <!-- class content clearfix -->
  </div> <!--class container --> 

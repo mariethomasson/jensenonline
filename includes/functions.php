@@ -6,7 +6,7 @@
     
     function logged_in() {                  //används på alla sidor 
         if(isset($_SESSION['email'])) {
-            $output = $_SESSION['firstname']." ".$_SESSION['lastname']. ", ".$_SESSION['title']. " i klass " .$_SESSION['class'];
+            $output = "Inloggad som: " . $_SESSION['firstname']." ".$_SESSION['lastname']. ", ".$_SESSION['title']. " i klass " .$_SESSION['class'];
 
         }else{
             header("Location: login.php");
@@ -35,7 +35,7 @@
              
         foreach($row as $r){
             $output .= '<tr>';
-            $output .= '<td>' . $r['lastname'] .','. $r['firstname'] .'</td>';
+            $output .= '<td>' . $r['lastname'] .', '. $r['firstname'] .'</td>';
             $output .= '<td>' . $r['email'] .'</td>';
             $output .= '<td>' . $r['mobile'] .'</td>';
             $output .= '<td>' . $r['skype'] .'</td>';
@@ -67,7 +67,7 @@
             
         foreach($row as $r){
             $output .= '<tr>';
-            $output .= '<td>' . $r['lastname'] . ',' . $r['firstname'] . '</td>';
+            $output .= '<td>' . $r['lastname'] . ', ' . $r['firstname'] . '</td>';
             $output .= '<td>' . $r['email'] . '</td>';
             $output .= '<td>' . $r['mobile'] . '</td>';
             $output .= '<td>' . $r['skype'] . '</td>';

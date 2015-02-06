@@ -1,6 +1,6 @@
 <?php
-    $pageTitle = "Mina kurser";
-    $section = "minakurser";
+    $pageTitle = "Klasslista";
+    $section = "minklass";
 ?>
 
 <?php require_once("../includes/db_connect.php"); ?>
@@ -13,15 +13,16 @@
     <div class="account-container">
         <div class="content clearfix">
             
-            <h2>Radera kurs</h2>
+            <h2>Radera användare</h2>
            <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>     
+
 
 <?php
 
     if(isset($_GET['id'])) {
         
     try{
-            $query = "SELECT * FROM courses WHERE id = :id";
+            $query = "SELECT * FROM users WHERE id = :id";
 
             $ps = $db->prepare($query);
             $result = $ps->execute(
@@ -32,12 +33,11 @@
             $posts = $ps->fetch(PDO::FETCH_ASSOC); 
         
             $id = $posts['id'];    
+            $lastname = $posts['lastname'];
+            $firstname = $posts['firstname'];
             $class = $posts['class'];
-            $course = $posts['course'];
-            $status = $posts['status'];
-            $startdate = $posts['startdate'];
-            $enddate = $posts['enddate'];
-            $rating = $posts['rating'];
+            $email = $posts['email'];
+            $mobile = $posts['mobile'];
      
         } catch(Exception $exception) {
             echo "Query failed, see error message below: <br /><br />";
@@ -47,15 +47,15 @@
 
     if (isset($_POST['delete'])){
      
+            $id = $_POST['id'];    
+            $lastname = $_POST['lastname'];
+            $firstname = $_POST['firstname'];
             $class = $_POST['class'];
-            $course = $_POST['course'];
-            $status = $_POST['status'];
-            $startdate = $_POST['startdate'];
-            $enddate = $_POST['enddate'];
-            $id = $_POST['id'];
+            $email = $_POST['email'];
+            $mobile = $_POST['mobile'];
     
     try{
-        $query = "DELETE FROM courses ";
+        $query = "DELETE FROM users ";
         $query .= "WHERE id = :id";
 
         $ps = $db->prepare($query); 
@@ -65,8 +65,8 @@
             ));
         
             if ($result) {
-                echo "Course deleted";
-                header("Location: minakurser.php?deleted=true");
+                echo "User deleted";
+                header("Location: minklass.php?deleted=true");
 
         }else {
              echo "Delete failed! <br /><br />";
@@ -81,27 +81,27 @@
 
 ?>
 
-    <form action="minakurser_delete.php" method="POST" >
+    <form action="minklass_delete.php" method="POST" >
         <table class="table">
             <tr class= "login-fields">
+                <td>Förnamn: </td>
+                <td class="field"><input type="text" readonly="" name="firstname"  id="firstname" value="<?php echo $firstname;?>" /></td>
+            </tr>
+            <tr class= "login-fields">
+                <td>Efternamn: </td>
+                <td class="field"><input type="text" readonly="" name="lastname" class="login username-field" id="lastname"value="<?php echo $lastname;?>" /></td>
+            </tr>
+            <tr class= "login-fields">
                 <td>Klass: </td>
-                <td class="field"><input type="text" readonly="" name="class"  id="username" value="<?php echo $class;?>" /></td>
+                <td class="field"><input type="text" name="class"  id="class" value="<?php echo $class;?>" /></td>
             </tr>
             <tr class= "login-fields">
-                <td>Kurs: </td>
-                <td class="field"><input type="text" readonly="" name="course" class="login username-field" id="username"value="<?php echo $course;?>" /></td>
+                <td>Email: </td>
+                <td class="field"><input type="text" name="email" id="email" value="<?php echo $email;?>" /></td>
             </tr>
             <tr class= "login-fields">
-                <td>Status: </td>
-                <td class="field"><input type="text" name="status"  id="status" value="<?php echo $status;?>" /></td>
-            </tr>
-            <tr class= "login-fields">
-                <td>Startdatum: </td>
-                <td class="field"><input type="text" name="startdate" id="startdate" value="<?php echo $startdate;?>" /></td>
-            </tr>
-            <tr class= "login-fields">
-                <td>Slutdatum: </td>
-                <td class="field"><input type="text" name="enddate" id="enddate" value="<?php echo $enddate;?>" /></td>
+                <td>Mobil: </td>
+                <td class="field"><input type="text" name="mobile" id="mobile" value="<?php echo $mobile;?>" /></td>
             </tr>
             <tr>
                 <input type='hidden' name='id' value=<?php echo $id;?> />
@@ -109,9 +109,9 @@
             </tr>
         
         </table>
+ 
     </form>
-    <a href="minakurser_search.php">Tillbaka</a>
-
+<a href="minklass_search.php">Tillbaka</a>
     
     </div> <!-- class content clearfix -->
  </div> <!--class container --> 

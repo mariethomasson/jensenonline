@@ -12,7 +12,7 @@
     <div class="main">
     <div class="account-container">
         <div class="content clearfix">
-            <h1>Min profil</h1>
+            <h2>Min profil</h2>
            <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>     
            <h4>Här kan du ändra dina uppgifter</h4>
 

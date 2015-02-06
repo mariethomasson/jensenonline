@@ -21,7 +21,7 @@ $class = $_SESSION['class'];
     <div class="container">
         <div class="row">
             <div class="span12 headline"> 
-                <h1>Edit course</h1>
+                <h1>Redigera kurs</h1>
                 <?php echo logged_in(); //if-satsen ersatt av en funktion ?>  
                 <form action="minakurser_search.php" method="POST">
                     <input type="text" name="search_string">
@@ -70,11 +70,12 @@ $class = $_SESSION['class'];
 ?>
 	<table class='table table-striped table-bordered'>
 		<thead>
-			<th>Class</th>
-			<th>Course</th>
+			<th>Klass</th>
+			<th>Kurs</th>
 			<th>Status</th>
             <th>Start</th>
-            <th>End</th>
+            <th>Slut</th>
+            <th>Poäng</th>
             <th>Action</th>
 		</thead>
 		
@@ -82,7 +83,7 @@ $class = $_SESSION['class'];
     
 		foreach($users as $user){
 			echo "<tr>";
-			echo "<td>". $user['class']. "</td><td>" .$user['course'] . "</td><td>" .$user['status'] . "</td><td>". $user['startdate']. "</td><td>". $user['enddate']. "</td><td><a href='minakurser_edit.php?id=" .$user['id']. "'>Edit /</a><a href='minakurser_delete.php?id=" .$user['id']. "'> Delete</a></td>";
+			echo "<td>". $user['class']. "</td><td>" .$user['course'] . "</td><td>" .$user['status'] . "</td><td>". $user['startdate']. "</td><td>". $user['enddate']. "</td><td>". $user['rating']. "</td><td><a href='minakurser_edit.php?id=" .$user['id']. "'>Edit /</a><a href='minakurser_delete.php?id=" .$user['id']. "'> Delete</a></td>";
 
 			echo "</tr>";
 		}

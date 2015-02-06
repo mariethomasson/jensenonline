@@ -14,8 +14,7 @@
     <div class="main">
     <div class="account-container">
         <div class="content clearfix">
-        <h1>Lägg till kurs</h1>
-    <p>Lägg till nya kurser i Jensen Online. </p>
+        <h2>Lägg till kurs</h2>
     <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i>
 
 <?php
@@ -54,9 +53,9 @@ if(isset($_POST["submit"])){
         if (empty($_POST["enddate"])) {
 			$endErr = "Enddate is required";
 	    }
-        if (!preg_match("/^[0-9]*$/",$rating)) {
+        /*if (!preg_match("/^[0-9]*$/",$rating)) {
 			$ratingErr = "Only numbers is allowed"; 
-		}
+		}*/
         if (empty($_POST["rating"])) {
 			$ratingErr = "Rating is required";
 	    } 
@@ -154,7 +153,7 @@ if(isset($_POST["submit"])){
             
         </table>
     </form>            
-       
+       <a href="minakurser.php">Tillbaks till kurslistan</a>
 
     </div> <!-- class content clearfix -->
  </div> <!--class container --> 
