@@ -178,7 +178,7 @@ function add_post(){
             $headlineErr = "The headline can't be longer than 80 characters";
         }
         
-        if (empty($headlineErr || $contentErr)) {
+        if (empty($headlineErr) && empty($contentErr)) {
         
             try{    
                 $author = logged_in();
