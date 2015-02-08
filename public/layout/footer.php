@@ -22,7 +22,7 @@
               <div class="footer-inner">
                 <div class="container">
                   <div class="row">
-                    <div class="span12"> &copy; 2014 - Viviana & Marie </div>
+                    <div class="span12"> &copy; Marie & Viviana - 2014 </div>
                     <!-- /span12 --> 
                   </div>
                   <!-- /row --> 

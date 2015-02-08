@@ -24,7 +24,7 @@
     <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<a class="brand" href="index.html">
+			<a class="brand" href="login.php">
 				<img src=img/Jensen.gif>			
 			</a>		
 		</div> <!-- /container -->
@@ -141,7 +141,7 @@ if(isset($_POST["submit"])) {
   <div class="footer-inner">
     <div class="container">
       <div class="row">
-        <div class="span12"> &copy; 2014 <a href="http://www.egrappler.com/">Bootstrap Responsive Admin Template</a>. </div>
+        <div class="span12"> &copy; Marie & Viviana - 2014</div>
         <!-- /span12 --> 
       </div>
       <!-- /row --> 
