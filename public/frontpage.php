@@ -307,48 +307,48 @@ include("layout/footer.php");
           editable: true,
           events: [
             {
-              title: 'All Day Event',
-              start: new Date(y, m, 1)
+              title: 'Heldagsevent',
+              start: new Date(y, m, 2)
             },
             {
-              title: 'Long Event',
+              title: 'Långhelg',
               start: new Date(y, m, d+5),
               end: new Date(y, m, d+7)
             },
             {
               id: 999,
-              title: 'Repeating Event',
+              title: 'Webbmöte',
               start: new Date(y, m, d-3, 16, 0),
               allDay: false
             },
             {
               id: 999,
-              title: 'Repeating Event',
-              start: new Date(y, m, d+4, 16, 0),
+              title: 'Projektmöte',
+              start: new Date(y, m, d+2, 12, 0),
               allDay: false
             },
             {
-              title: 'Meeting',
-              start: new Date(y, m, d, 10, 30),
+              title: 'Projektmöte',
+              start: new Date(y, m, d-5, 12, 0),
               allDay: false
             },
             {
-              title: 'Lunch',
+              title: 'Lunchmöte',
               start: new Date(y, m, d, 12, 0),
               end: new Date(y, m, d, 14, 0),
               allDay: false
             },
             {
-              title: 'Birthday Party',
-              start: new Date(y, m, d+1, 19, 0),
-              end: new Date(y, m, d+1, 22, 30),
+              title: 'LIA-föreläsning',
+              start: new Date(y, m, d+1, 9, 0),
+              end: new Date(y, m, d+1, 10, 30),
               allDay: false
             },
             {
-              title: 'EGrappler.com',
-              start: new Date(y, m, 28),
-              end: new Date(y, m, 29),
-              url: 'http://EGrappler.com/'
+              title: 'Redovisningar',
+              start: new Date(y, m, 24),
+              end: new Date(y, m, 25),
+              url: 'http://www.jenseneducation.se/JENSEN-yrkeshogskola/'
             }
           ]
         });

@@ -264,6 +264,48 @@ function show_all_posts() {
             $id = $p['id'];
 
             $output .= "<li class='widget-content'>";
+            $output .= "<div><p>" . $p['date'] . "</p></div>";
+            $output .= "<div>" . $p['author']. "</p></div>";
+            $output .= "<div><h3>" . $p['headline']. "</h3></div>";
+            $output .= "<div><p>" . $p['content']. "</p></div>";
+            $output .= "</li>";
+           
+            $i++;
+        }
+        
+        $output .= "</ul>";
+        
+     }catch(Exception $exception){
+        echo "Query failed";
+        echo $exception;
+    }
+
+    return $output;
+}
+function show_all_posts_admin() {    
+    
+    global $db;
+    
+    try{
+        $id = $headline = $author = $content = $date = ''; 
+        
+        $query = "SELECT * FROM posts ";
+        $query .= "ORDER BY date DESC";
+        
+        $ps = $db->prepare($query);
+        
+        $result = $ps->execute();
+        
+        $posts = $ps->fetchAll();
+        
+        $output = "<ul class='news-items'>";
+        
+        $i = 0;
+        foreach ($posts as $p){
+            
+            $id = $p['id'];
+
+            $output .= "<li class='widget-content'>";
             $output .= "<form action='meddelanden.php' method='POST'>";
             $output .= "<div><p>" . $p['date'] . "</p></div>";
             $output .= "<div>" . $p['author']. "</p></div>";
