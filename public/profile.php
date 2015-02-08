@@ -13,11 +13,15 @@
     <div class="account-container">
         <div class="content clearfix">
             <h2>Min profil</h2>
-           <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>     
+    
            <h4>Här kan du ändra dina uppgifter</h4>
+            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i>
 
 <?php
 //php for the first form, updating profile.
+$title = $class = $firstname = $lastname = $address = $postnumber = $postaddress = $email = $phone = $mobile = $username = $password = $re_password = "" ;
+	$titleErr = $classErr = $firstErr = $lastErr = $emailErr = $userErr = $passErr = $rePassErr = "";
+$msg = "";
 
     $firstname = $_SESSION['firstname'];
     $lastname = $_SESSION['lastname'];
@@ -32,13 +36,17 @@
 
     if(isset($_POST["update"])) {
 
-        $address = $_POST['address'];
-        $postnumber = $_POST['postnumber'];
-        $postaddress = $_POST['postaddress'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $mobile = $_POST['mobile'];
-        $skype = $_POST['skype'];
+        $address      = trim($_POST['address']);
+        $postnumber   = trim($_POST['postnumber']);
+        $postaddress  = trim($_POST['postaddress']);
+        $email        = trim($_POST['email']);
+        $phone        = trim($_POST['phone']);
+        $mobile       = trim($_POST['mobile']);
+        $skype        = trim($_POST['skype']);
+        
+        if (empty($_POST["email"])) {
+			$emailErr = "Email is required";
+	    }
 
     try{
         require_once("../includes/db_connect.php"); 
@@ -72,9 +80,10 @@
 
     }
 ?>
+            
+<!------START uploading an image, the full Sibar php-----> 
+            
 <?php 
-//php for the second form, uploading an image, the full Sibar php.
-
 	//checking if the form has been submitted 
 	if( isset($_POST['upload']) ){
 		//display $_FILES content
@@ -92,7 +101,6 @@
 						[error] => 0
 						[size] => 106131
 					)
-
 			)
 		*/
 		  if( is_uploaded_file($_FILES['upfile']['tmp_name']) ){
@@ -101,7 +109,7 @@
                 $fileName = $_FILES['upfile']['name'];           		        //this is the actual name of the file   		           
                 $fileTempName = $_FILES['upfile']['tmp_name'];					//this is the temporary name of the file     
 				$fileSize =  $_FILES['upfile']['size']; 						//this is the filesize
-                $path = "/Applications/XAMPP/htdocs/jensen/GIT/jensenonline/uploads/";												//this is the path where you want to save the actual file 
+                $path = "/Applications/XAMPP/htdocs/jensen/GIT/my_jensenonline/public/uploads/";												//this is the path where you want to save the actual file 
                 $newPathAndName = $path . $fileName;		//uploads/ruler.jpg					//this is the actual path and actual name of the file
 				
 				//you can use move_uploaded_file() to move and rename the temp file
@@ -122,43 +130,43 @@
     }//end if isset upload
 
 ?>
-    
+<!------END uploading an image, the full Sibar php----->    
     
     <form action="profile.php" method="POST" >
-        <table class="table">
-            <tr class= "login-fields">
+        <table>
+            <tr>
                 <td>Förnamn: </td>
                 <td class="field"><input type="text" readonly="" name="firstname"  id="username" value="<?php echo $firstname;?>" /></td>
             </tr>
-            <tr class= "login-fields">
+            <tr>
                 <td>Efternamn: </td>
                 <td class="field"><input type="text" readonly="" name="lastname" class="login username-field" id="username"value="<?php echo $lastname;?>" /></td>
             </tr>
-            <tr class= "login-fields">
+            <tr>
                 <td>Adress: </td>
                 <td class="field"><input type="text" name="address"  id="username" value="<?php echo $address;?>" /></td>
             </tr>
-            <tr class= "login-fields">
+            <tr>
                 <td>Postnummer: </td>
                 <td class="field"><input type="text" name="postnumber" id="username" value="<?php echo $postnumber;?>" /></td>
             </tr>
-            <tr class= "login-fields">
+            <tr>
                 <td>Postadress: </td>
                 <td class="field"><input type="text" name="postaddress" id="username" value="<?php echo $postaddress;?>" /></td>
             </tr>
-            <tr class= "login-fields">
+            <tr>
                 <td>E-post: </td>
-                <td class="field"><input type="text" name="email" id="username" value="<?php echo $email;?>" /></td>
+                <td><input type="email" name="email" id="username" value="<?php echo $email;?>" /><span class="error"> * <?php echo $emailErr; ?></span></td>
             </tr>
-            <tr class= "login-fields">
+            <tr>
                 <td>Telefon: </td>
                 <td class="field"><input type="text" name="phone" id="username"value="<?php echo $phone;?>" /></td>
             </tr>
-            <tr class= "login-fields">
+            <tr>
                 <td>Mobil: </td>
                 <td class="field"><input type="text" name="mobile" id="username" value="<?php echo $mobile;?>" /></td>
             </tr>
-            <tr class= "login-fields">
+            <tr>
                 <td>Skype: </td>
                 <td class="field"><input type="text" name="skype" id="username" value="<?php echo $skype;?>" /></td>
             </tr>
