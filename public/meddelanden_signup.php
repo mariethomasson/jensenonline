@@ -69,3 +69,5 @@ $contentErr = $errors[1];
 <?php
 include("layout/footer.php");
 ?>
+            
+<script src="js/analyticstracking.js"></script>

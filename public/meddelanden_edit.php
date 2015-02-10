@@ -129,3 +129,5 @@ if(isset($_POST['edit'])) {
 <?php
 include("layout/footer.php");
 ?>
+    
+<script src="js/analyticstracking.js"></script>

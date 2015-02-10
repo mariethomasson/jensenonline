@@ -100,5 +100,5 @@ $title = $_SESSION['title'];
 include("layout/footer.php");
 ?>
     
-            
+<script src="js/analyticstracking.js"></script>        
            

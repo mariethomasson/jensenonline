@@ -129,3 +129,5 @@
 <?php
 include("layout/footer.php");
 ?>
+
+<script src="js/analyticstracking.js"></script>

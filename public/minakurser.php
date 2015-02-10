@@ -97,3 +97,4 @@ $title = $_SESSION['title'];
 <?php
 include("layout/footer.php");
 ?>
+<script src="js/analyticstracking.js"></script>

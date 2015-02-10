@@ -354,3 +354,5 @@ include("layout/footer.php");
         });
       });
     </script><!-- /Calendar -->
+<script src="js/analyticstracking.js"></script>
+
