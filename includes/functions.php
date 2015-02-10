@@ -181,7 +181,7 @@ function add_post(){
         if (empty($headlineErr) && empty($contentErr)) {
         
             try{    
-                $author = logged_in();
+                $author = $_SESSION['firstname']. " " .$_SESSION['lastname'] . ", ".$_SESSION['title']. " " .$_SESSION['class'];
         
                 $query = "INSERT INTO posts (headline, content, author) ";
                 $query .= "VALUES (:headline, :content, :author)";
@@ -189,7 +189,7 @@ function add_post(){
                 $ps = $db->prepare($query);
                 $result = $ps->execute(array(
                     'headline' => $headline,
-                    'content' => $content,
+                    'content' => nl2br($content),
                     'author' => $author
         
             ));
@@ -257,6 +257,7 @@ function show_all_posts() {
         $posts = $ps->fetchAll();
         
         $output = "<ul class='news-items'>";
+        
         
         $i = 0;
         foreach ($posts as $p){
