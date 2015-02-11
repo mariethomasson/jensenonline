@@ -38,7 +38,8 @@
 
             $posts = $ps->fetch(PDO::FETCH_ASSOC); 
         
-            $id = $posts['id'];    
+            $id = $posts['id'];   
+            $class = $posts['class'];
             $headline = $posts['headline'];
             $content = $posts['content'];
            
@@ -49,15 +50,19 @@
         }
     }
   
-$headlineErr = $contentErr = '';
+$classErr = $headlineErr = $contentErr = '';
 
-if(isset($_POST['edit'])) {
-  
-            $headline= $_POST['headline'];
+    if(isset($_POST['edit'])) {
+            $class = $_POST['class'];
+            $headline = $_POST['headline'];
             $content = $_POST['content'];
             $id = $_POST['id'];
      
-     if (empty($headline)) {
+        if (empty($class)) {
+			$classErr = "Class is required";
+		}
+        
+        if (empty($headline)) {
 			$headlineErr = "Headline is required";
 		}
         
@@ -69,16 +74,17 @@ if(isset($_POST['edit'])) {
             $headlineErr = "The headline can't be longer than 80 characters";
         }
         
-        if (empty($headlineErr) && empty($contentErr)) {
+        if (empty($classErr) && empty($headlineErr) && empty($contentErr)) {
     
         try{  
             $query = "UPDATE posts ";
-            $query .= "SET headline = :headline, content = :content ";
+            $query .= "SET class = :class, headline = :headline, content = :content ";
             $query .= "WHERE id = :id"; 
 
             $ps = $db->prepare($query); 
             $result = $ps->execute(
                 array (
+                    'class'=>$class,
                     'headline'=>$headline, 
                     'content'=>$content, 
                     'id'=>$id
@@ -107,6 +113,20 @@ if(isset($_POST['edit'])) {
 		                      <td>Headline:</td> 
 		                      <td><input type="text-field" id="headline" name="headline" class='span6' value="<?php echo $headline;?>"/><span class="error"> * <?php echo $headlineErr; ?></span></td>
 	                       </tr>
+                           <tr>
+                            <th><label for="class">Klass: </label></th>
+                            <td>
+                            <select name="class" id="class" >
+                                <option value="">-- Välj --</option>
+                                <option value="CBK14">CBK14</option>
+                                <option value="IPK14">IPK14</option>
+                                <option value="PTK14">PTK14</option>
+                                <option value="WUK14">WUK14</option>
+                                <option value="Jensen">Jensen</option>
+                            </td>
+                            <td><span class="error">* <?php echo $classErr; ?></span></td>
+                        </tr>
+
         	               <tr>
 		                      <td>Content:</td> 
 		                      <td><textarea id="content" name="content" class="form-control span9" rows="20" ><?php echo htmlspecialchars($content);?></textarea><span class="error"> * <?php echo $contentErr; ?></span</td>

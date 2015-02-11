@@ -38,7 +38,7 @@ $title = $_SESSION['title'];
     if($title == 'Admin') {
         header("Location: meddelanden_signup.php");
     } else {
-        echo show_all_posts();
+        echo show_all_posts($class);
 }
 
 ?>

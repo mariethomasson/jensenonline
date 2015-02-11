@@ -158,13 +158,18 @@
 
 function add_post(){
     
-    $headlineErr = $contentErr = '';
+    $headlineErr = $contentErr = $classErr = '';
     
     if(isset($_POST['submit'])){
         
         global $db;
         $headline = $_POST['headline'];
         $content = $_POST['content'];
+        $class = $_POST['class'];
+        
+        if (empty($_POST["class"])) {
+			$classErr = "Class is required";
+		}
         
         if (empty($headline)) {
 			$headlineErr = "Headline is required";
@@ -178,20 +183,20 @@ function add_post(){
             $headlineErr = "The headline can't be longer than 80 characters";
         }
         
-        if (empty($headlineErr) && empty($contentErr)) {
+        if (empty($classErr) &&  empty($headlineErr) && empty($contentErr)) {
         
             try{    
                 $author = $_SESSION['firstname']. " " .$_SESSION['lastname'] . ", ".$_SESSION['title']. " " .$_SESSION['class'];
         
-                $query = "INSERT INTO posts (headline, content, author) ";
-                $query .= "VALUES (:headline, :content, :author)";
+                $query = "INSERT INTO posts (headline, content, class, author) ";
+                $query .= "VALUES (:headline, :content, :class, :author)";
         
                 $ps = $db->prepare($query);
                 $result = $ps->execute(array(
                     'headline' => $headline,
+                    'class' => $class,
                     'content' => nl2br($content),
                     'author' => $author
-        
             ));
         
             if($result){
@@ -206,7 +211,7 @@ function add_post(){
         }
         
     }
-    $errors = array($headlineErr, $contentErr);  
+    $errors = array($headlineErr, $contentErr, $classErr);  
     return $errors;
 }
         
@@ -240,19 +245,22 @@ function delete_post(){
     
 //***Show list
 
-function show_all_posts() {    
+function show_all_posts($myClass) {    
     
     global $db;
     
     try{
-        $id = $headline = $author = $content = $date = ''; 
+        $id = $headline = $author = $content = $date = $class =''; 
         
-        $query = "SELECT * FROM posts ";
+        $query = "SELECT * FROM posts WHERE class=:class OR class='Jensen' ";
         $query .= "ORDER BY date DESC";
         
         $ps = $db->prepare($query);
         
-        $result = $ps->execute();
+        $result = $ps->execute(
+            array(
+            'class' => $myClass
+        ));
         
         $posts = $ps->fetchAll();
         
@@ -267,6 +275,7 @@ function show_all_posts() {
             $output .= "<li class='widget-content'>";
             $output .= "<div><p>" . $p['date'] . "</p></div>";
             $output .= "<div>" . $p['author']. "</p></div>";
+            $output .= "<div>Till: " . $p['class']. "</p></div>";
             $output .= "<div><h3>" . $p['headline']. "</h3></div>";
             $output .= "<div><p>" . $p['content']. "</p></div>";
             $output .= "</li>";
@@ -283,6 +292,7 @@ function show_all_posts() {
 
     return $output;
 }
+
 function show_all_posts_admin() {    
     
     global $db;
@@ -310,6 +320,7 @@ function show_all_posts_admin() {
             $output .= "<form action='meddelanden.php' method='POST'>";
             $output .= "<div><p>" . $p['date'] . "</p></div>";
             $output .= "<div>" . $p['author']. "</p></div>";
+            $output .= "<div>Till: " . $p['class']. "</p></div>";
             $output .= "<div><h3>" . $p['headline']. "</h3></div>";
             $output .= "<div><p>" . $p['content']. "</p></div>";
             $output .= "<div><a href='meddelanden_edit.php?id=$id'<p class='button btn btn-success' id='edit'>Edit</p> </a>";
