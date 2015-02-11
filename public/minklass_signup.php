@@ -123,6 +123,7 @@ if(isset($_POST["submit"])){
                  
 		try{
         require_once("../includes/db_connect.php");
+            /*
             //här gör vi hashade passwords
             $options = [
 			'cost' => 12,			
@@ -130,7 +131,7 @@ if(isset($_POST["submit"])){
 
             $hashedPass = password_hash($password, PASSWORD_BCRYPT, $options); 
             //slut hash 
-
+            */
             $query = "INSERT INTO users (title, class, firstname, lastname, address, postnumber, postaddress, email, phone, mobile, username, password) ";
             $query .= "VALUES (:title, :class, :firstname, :lastname, :address, :postnumber, :postaddress, :email, :phone, :mobile, :username, :password) ";
 
@@ -147,7 +148,7 @@ if(isset($_POST["submit"])){
                 'phone'=>$phone,
                 'mobile'=>$mobile,
                 'username'=>$username,
-                'password'=>$hashedPass,//tidigare $password
+                'password'=>$password,//tidigare $hashedPass
             ));
 
                 if ($result) {
