@@ -38,17 +38,10 @@ $headline = $content = $class = '';
         <form action="meddelanden_signup.php" method="POST">
             <table>
                 <tr>
-                    <td><h3>Rubrik:</h3></td>
-                </tr>
-                <tr>
-                    <td><span class="error"> * <?php echo $headlineErr; ?></span><input type="text-field" id="headline" name="headline" class='span6' size='80'"<?php echo $headline; ?>"/></td>
-                </tr>
-                <tr>
                     <td><h3>Klass:</h3><span class="error"> * <?php echo $classErr; ?></span></td>
                 </tr>
                 <tr>
                     <td>
-                    
                     <select name="class" id="class" >
                         <option value="">-- Välj --</option>
                         <option value="CBK14">CBK14</option>
@@ -58,6 +51,13 @@ $headline = $content = $class = '';
                         <option value="Jensen">Jensen</option>
                     </td>
                 </tr>
+                <tr>
+                    <td><h3>Rubrik:</h3></td>
+                </tr>
+                <tr>
+                    <td><span class="error"> * <?php echo $headlineErr; ?></span><input type="text" id="headline" name="headline" class="span6" size="100" value="<?php echo $headline; ?>"/></td>
+                </tr>
+
                 <tr>
                     <td><h3>Text:</h3></td>
                 </tr>
