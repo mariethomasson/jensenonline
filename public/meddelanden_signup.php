@@ -21,6 +21,8 @@
                         <?php echo logged_in(); ?>
                     </div> <!--span12-->
                 </div> <!--row-->
+                <i>Fält markerade med en * är obligatoriska.</i>
+                <br><br>
 
 
 <?php 
@@ -36,12 +38,17 @@ $headline = $content = $class = '';
         <form action="meddelanden_signup.php" method="POST">
             <table>
                 <tr>
-                    <td>Headline:</td>
-                    <td><input type="text-field" id="headline" name="headline" class='span6' value="<?php echo $headline; ?>"/><span class="error"> * <?php echo $headlineErr; ?></span></td>
+                    <td><h3>Rubrik:</h3></td>
                 </tr>
                 <tr>
-                    <th><label for="class">Klass: </label></th>
+                    <td><span class="error"> * <?php echo $headlineErr; ?></span><input type="text-field" id="headline" name="headline" class='span6' size='80'"<?php echo $headline; ?>"/></td>
+                </tr>
+                <tr>
+                    <td><h3>Klass:</h3><span class="error"> * <?php echo $classErr; ?></span></td>
+                </tr>
+                <tr>
                     <td>
+                    
                     <select name="class" id="class" >
                         <option value="">-- Välj --</option>
                         <option value="CBK14">CBK14</option>
@@ -50,15 +57,15 @@ $headline = $content = $class = '';
                         <option value="WUK14">WUK14</option>
                         <option value="Jensen">Jensen</option>
                     </td>
-                    <td><span class="error">* <?php echo $classErr; ?></span></td>
                 </tr>
                 <tr>
-                    <td>Content:</td>
-                    <td><textarea id="content" name="content" class="form-control span9" rows="20" value="<?php echo $content; ?>"></textarea><span class="error"> * <?php echo $contentErr; ?></span</td>
+                    <td><h3>Text:</h3></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Submit" name="submit" class="button btn btn-success btn-large"/></td>
-                    <td><input type="reset" value="Reset" name="reset" class="button btn btn-success btn-large" /></td>
+                    <td><span class="error"> * <?php echo $contentErr; ?></span><textarea id="content" name="content" class="form-control span9" rows="10" value="<?php echo $content; ?>"></textarea></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Posta inlägg" name="submit" class="button btn btn-success btn-large"/></td>
 	           </tr>
 	       </table>
         </form>
@@ -67,7 +74,7 @@ $headline = $content = $class = '';
 
 
     <div class="row">
-        <div class="span9">
+        <div class="span9" class="mit_mess">
 
                 <?php echo show_all_posts_admin();?>           
 

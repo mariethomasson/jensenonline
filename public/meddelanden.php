@@ -23,28 +23,20 @@ $title = $_SESSION['title'];
                         <h2>Meddelanden</h2>
                         <?php echo logged_in(); ?>
                   
-        </div> <!--span12--> 
-      </div> <!--row--> 
+                    </div> <!--span12--> 
+                  </div> <!--row--> 
 
       <div class="row">
-            <div class="span9">  
-                <div class="widget widget-table action-table">
-                    <div class="widget-header"> <i class="icon-group"></i>
-                    <h3>Meddelanden</h3>
-                    </div>
-                    <!-- /widget-header -->
-                        <div class="widget-content"> 
+            <div class="span9" id="mit_mess">  
+                        
 <?php
     if($title == 'Admin') {
         header("Location: meddelanden_signup.php");
     } else {
         echo show_all_posts($class);
 }
-
 ?>
-                        </div> <!-- /widget-content --> 
-                </div> <!-- /widget -->
-            </div> <!-- /span9—>
+            </div> <!-- /span9 -->
 
                 </div> <!--row-->
             </div> <!--container-->

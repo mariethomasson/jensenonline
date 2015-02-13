@@ -274,7 +274,7 @@ function show_all_posts($myClass) {
 
             $output .= "<li class='widget-content'>";
             $output .= "<div><p>" . $p['date'] . "</p></div>";
-            $output .= "<div>" . $p['author']. "</p></div>";
+            $output .= "<div>Från: " . $p['author']. "</p></div>";
             $output .= "<div>Till: " . $p['class']. "</p></div>";
             $output .= "<div><h3>" . $p['headline']. "</h3></div>";
             $output .= "<div><p>" . $p['content']. "</p></div>";
@@ -319,12 +319,12 @@ function show_all_posts_admin() {
             $output .= "<li class='widget-content'>";
             $output .= "<form action='meddelanden.php' method='POST'>";
             $output .= "<div><p>" . $p['date'] . "</p></div>";
-            $output .= "<div>" . $p['author']. "</p></div>";
+            $output .= "<div>Från: " . $p['author']. "</p></div>";
             $output .= "<div>Till: " . $p['class']. "</p></div>";
             $output .= "<div><h3>" . $p['headline']. "</h3></div>";
             $output .= "<div><p>" . $p['content']. "</p></div>";
-            $output .= "<div><a href='meddelanden_edit.php?id=$id'<p class='button btn btn-success' id='edit'>Edit</p> </a>";
-            $output .= "<input type='submit' value='Delete' class='button btn btn-success' name='delete' id='delete'/>";
+            $output .= "<div><a href='meddelanden_edit.php?id=$id'<p class='button btn btn-success' id='edit'>Ändra</p> </a>";
+            $output .= "<input type='submit' value='Radera' class='button btn btn-success btn-medium' name='delete' id='delete'/>";
             $output .= "<input type='hidden' name='id' id='id' value='$id'/></div>";
              $output .= "</form>";
             $output .= "</li>";
