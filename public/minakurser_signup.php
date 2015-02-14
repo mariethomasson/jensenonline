@@ -12,10 +12,11 @@
     
 <main>   
     <div class="main">
-    <div class="account-container">
-        <div class="content clearfix">
-        <h2>Lägg till kurs</h2>
-    <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i>
+        <div class="account-container">
+            <div class="content clearfix">
+            <h2>Lägg till kurs</h2>
+            <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>
+            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i>
 
 <?php
     $class = $status = $course = $startdate = $enddate = $rating = "" ;
@@ -95,17 +96,15 @@ if(isset($_POST["submit"])){
        }else {
             $username = $password = $hashedPass =  "";
         }
-
-	
-	}
-        
+	}    
 ?>
             
 <!-- Formulär --> 
 <form action="minakurser_signup.php" method="POST" >
+    
         <table>
             <tr>
-                <th><label for="class">Klass: </label></th>
+                <td>Klass</td>
                 <td>
                 <select name="class" id="class">
                     <option value="">-- Välj --</option>
@@ -118,7 +117,7 @@ if(isset($_POST["submit"])){
                 <td><span class="error">* <?php echo $classErr; ?></span></td>
             </tr>
             <tr>
-                <th><label for="status">Status: </label></th>
+                <td>Status</td>
                 <td>
                 <select name="status" id="status" >
                     <option value="">-- Välj --</option>
@@ -148,12 +147,12 @@ if(isset($_POST["submit"])){
 <?php echo $_SESSION['msg']; ?><br /><br />
             
             <tr>
-                <td><input type="submit" name="submit" value="Signup" /></td>
+                <td><input type="submit" name="submit" value="Lägg till" class="button btn btn-success btn-middle"/></td>
             </tr>
             
         </table>
     </form>            
-       <a href="minakurser.php">Tillbaks till kurslistan</a>
+       <i><a href="minakurser.php">Tillbaka till kurslistan</a></i>
 
     </div> <!-- class content clearfix -->
  </div> <!--class container --> 

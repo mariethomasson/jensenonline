@@ -8,14 +8,14 @@
 <?php include("layout/header.php"); ?>
 
 <link href="css/pages/minprofil.css" rel="stylesheet">
-
+<main>
     <div class="main">
-    <div class="account-container">
-        <div class="content clearfix">
+        <div class="account-container">
+            <div class="content clearfix">
             
             <h2>Ändra kurs</h2>
-           <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>     
-
+           <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>
+            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.<br><br><br></i>
 
 <?php
 
@@ -45,7 +45,10 @@
             echo $exception. "<br /> <br />";
         }
     }
-  
+
+$classErr = $statusErr = $courseErr = $startErr = $endErr = $ratingErr = "";
+$msg = "";
+
  if(isset($_POST['update'])) {
   
             $class = $_POST['class'];
@@ -55,6 +58,29 @@
             $enddate = $_POST['enddate'];
             $rating = $_POST['rating'];
             $id = $_POST['id'];
+     
+        if (empty($_POST["status"])) {
+			$statusErr = "Status is required";
+		}
+        if (!preg_match("/^[0-9 -]*$/",$startdate)) {
+			$startErr = "Only yyyy-mm-dd format is allowed"; 
+		}
+        if (empty($_POST["startdate"])) {
+			$startErr = "Startdate is required";
+	    }
+        if (!preg_match("/^[0-9 -]*$/",$enddate)) {
+			$endErr = "Only yyyy-mm-dd format is allowed"; 
+		}
+        if (empty($_POST["enddate"])) {
+			$endErr = "Enddate is required";
+	    }
+        /*if (!preg_match("/^[0-9]*$/",$rating)) {
+			$ratingErr = "Only numbers is allowed"; 
+		}*/
+        if (empty($_POST["rating"])) {
+			$ratingErr = "Rating is required";
+	    } 
+if(empty($statusErr) && empty($startErr) && empty($endErr) && empty($ratingErr))
 
     try{  
             $query = "UPDATE courses ";
@@ -87,45 +113,46 @@
 ?>
 
     <form action="minakurser_edit.php" method="POST" >
-        <table class="table">
-            <tr class= "login-fields">
-                <td>Klass: </td>
-                <td class="field"><input type="text" readonly="" name="class"  id="username" value="<?php echo $class;?>" /></td>
+        <table>
+            <tr>
+                <td>Klass</td>
+                <td><input type="text" readonly="" name="class"  id="username" value="<?php echo $class;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Kurs: </td>
-                <td class="field"><input type="text" readonly="" name="course" class="login username-field" id="username"value="<?php echo $course;?>" /></td>
+            <tr>
+                <td>Kurs</td>
+                <td><input type="text" readonly="" name="course" class="login username-field" id="username"value="<?php echo $course;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Status: </td>
-                <td class="field"><input type="text" name="status"  id="status" value="<?php echo $status;?>" /></td>
+            <tr>
+                <td>Status</td>
+                <td><input type="text" name="status"  id="status" value="<?php echo $status;?>" /><span class="error"> * <?php echo $statusErr; ?></span></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Startdatum: </td>
-                <td class="field"><input type="text" name="startdate" id="startdate" value="<?php echo $startdate;?>" /></td>
+            <tr>
+                <td>Startdatum</td>
+                <td><input type="text" name="startdate" id="startdate" value="<?php echo $startdate;?>" /><span class="error"> * <?php echo $startErr; ?></span></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Slutdatum: </td>
-                <td class="field"><input type="text" name="enddate" id="enddate" value="<?php echo $enddate;?>" /></td>
+            <tr>
+                <td>Slutdatum</td>
+                <td><input type="text" name="enddate" id="enddate" value="<?php echo $enddate;?>" /><span class="error"> * <?php echo $endErr; ?></span></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Poäng: </td>
-                <td class="field"><input type="text" name="rating" id="rating" value="<?php echo $rating;?>" /></td>
+            <tr>
+                <td>Poäng</td>
+                <td><input type="text" name="rating" id="rating" value="<?php echo $rating;?>" /><span class="error"> * <?php echo $ratingErr; ?></span></td>
             </tr>
             <tr>
                 <input type='hidden' name='id' value=<?php echo $id;?> />
-                <td class="login-actions"><input type="submit" name="update" value="Uppdatera" class="button btn btn-success btn-large" /></td>
+                <td class="login-actions"><input type="submit" name="update" value="Uppdatera" class="button btn btn-success btn-middle" /></td>
             </tr>
         
         </table>
 
     </form>
 
-<a href="minakurser_search.php">Tillbaka</a>
+<i><a href="minakurser_search.php">Tillbaka</a></i>
     
-    </div> <!-- class content clearfix -->
- </div> <!--class container --> 
-</div> <!-- class main-->
+        </div> <!-- class content clearfix -->
+     </div> <!--class container --> 
+    </div> <!-- class main-->
+</main>
        
 <?php
 include("layout/footer.php");
