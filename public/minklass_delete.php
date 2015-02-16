@@ -82,36 +82,36 @@
 ?>
 
     <form action="minklass_delete.php" method="POST" >
-        <table class="table">
-            <tr class= "login-fields">
-                <td>Förnamn: </td>
-                <td class="field"><input type="text" readonly="" name="firstname"  id="firstname" value="<?php echo $firstname;?>" /></td>
+        <table>
+            <tr>
+                <td>Förnamn </td>
+                <td><input type="text" readonly="" name="firstname"  id="firstname" value="<?php echo $firstname;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Efternamn: </td>
-                <td class="field"><input type="text" readonly="" name="lastname" class="login username-field" id="lastname"value="<?php echo $lastname;?>" /></td>
+            <tr>
+                <td>Efternamn </td>
+                <td><input type="text" readonly="" name="lastname" class="login username-field" id="lastname"value="<?php echo $lastname;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Klass: </td>
-                <td class="field"><input type="text" name="class"  id="class" value="<?php echo $class;?>" /></td>
+            <tr>
+                <td>Klass </td>
+                <td><input type="text" name="class"  id="class" value="<?php echo $class;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Email: </td>
-                <td class="field"><input type="text" name="email" id="email" value="<?php echo $email;?>" /></td>
+            <tr>
+                <td>E-post </td>
+                <td><input type="text" name="email" id="email" value="<?php echo $email;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Mobil: </td>
-                <td class="field"><input type="text" name="mobile" id="mobile" value="<?php echo $mobile;?>" /></td>
+            <tr>
+                <td>Mobil </td>
+                <td><input type="text" name="mobile" id="mobile" value="<?php echo $mobile;?>" /></td>
             </tr>
             <tr>
                 <input type='hidden' name='id' value=<?php echo $id;?> />
-                <td class="login-actions"><input type="submit" name="delete" value="Radera" class="button btn btn-success btn-large" /></td>
+                <td class="login-actions"><input type="submit" name="delete" value="Radera" class="button btn btn-success" /></td>
             </tr>
         
         </table>
  
     </form>
-<a href="minklass_search.php">Tillbaka</a>
+<i><a href="minklass_search.php">Tillbaka</a></i>
     
     </div> <!-- class content clearfix -->
  </div> <!--class container --> 

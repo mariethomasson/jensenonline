@@ -34,31 +34,31 @@ if(isset($_POST["submit"])){
 		$rating       = trim($_POST["rating"]);
 	
 		if (empty($_POST["class"])) {
-			$classErr = "Class is required";
+			$classErr = "Klass krävs";
 		}
         if (empty($_POST["status"])) {
-			$statusErr = "Status is required";
+			$statusErr = "Status krävs";
 		}
         if (empty($_POST["course"])) {
-			$courseErr = "Course is required";
+			$courseErr = "Kurs krävs";
 		}
         if (!preg_match("/^[0-9 -]*$/",$startdate)) {
-			$startErr = "Only yyyy-mm-dd format is allowed"; 
+			$startErr = "Endast ÅÅÅÅ-MM-DD format tillåts"; 
 		}
         if (empty($_POST["startdate"])) {
-			$startErr = "Startdate is required";
+			$startErr = "Startdatum krävs";
 	    }
         if (!preg_match("/^[0-9 -]*$/",$enddate)) {
-			$endErr = "Only yyyy-mm-dd format is allowed"; 
+			$endErr = "Endast ÅÅÅÅ-MM-DD format tillåts"; 
 		}
         if (empty($_POST["enddate"])) {
-			$endErr = "Enddate is required";
+			$endErr = "Slutdatum krävs";
 	    }
         /*if (!preg_match("/^[0-9]*$/",$rating)) {
 			$ratingErr = "Only numbers is allowed"; 
 		}*/
         if (empty($_POST["rating"])) {
-			$ratingErr = "Rating is required";
+			$ratingErr = "Poäng krävs";
 	    } 
     
         if(empty($classErr) && empty($statusErr) && empty($courseErr) && empty($startErr) && empty($endErr) && empty($ratingErr)){

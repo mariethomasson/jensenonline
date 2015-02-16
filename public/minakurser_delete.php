@@ -82,35 +82,35 @@
 ?>
 
     <form action="minakurser_delete.php" method="POST" >
-        <table class="table">
-            <tr class= "login-fields">
-                <td>Klass: </td>
-                <td class="field"><input type="text" readonly="" name="class"  id="username" value="<?php echo $class;?>" /></td>
+        <table>
+            <tr>
+                <td>Klass </td>
+                <td><input type="text" readonly="" name="class"  id="username" value="<?php echo $class;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Kurs: </td>
-                <td class="field"><input type="text" readonly="" name="course" class="login username-field" id="username"value="<?php echo $course;?>" /></td>
+            <tr>
+                <td>Kurs </td>
+                <td><input type="text" readonly="" name="course" class="login username-field" id="username"value="<?php echo $course;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Status: </td>
-                <td class="field"><input type="text" name="status"  id="status" value="<?php echo $status;?>" /></td>
+            <tr>
+                <td>Status </td>
+                <td><input type="text" name="status"  id="status" value="<?php echo $status;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Startdatum: </td>
-                <td class="field"><input type="text" name="startdate" id="startdate" value="<?php echo $startdate;?>" /></td>
+            <tr>
+                <td>Startdatum </td>
+                <td><input type="text" name="startdate" id="startdate" value="<?php echo $startdate;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Slutdatum: </td>
-                <td class="field"><input type="text" name="enddate" id="enddate" value="<?php echo $enddate;?>" /></td>
+            <tr>
+                <td>Slutdatum </td>
+                <td><input type="text" name="enddate" id="enddate" value="<?php echo $enddate;?>" /></td>
             </tr>
             <tr>
                 <input type='hidden' name='id' value=<?php echo $id;?> />
-                <td class="login-actions"><input type="submit" name="delete" value="Radera" class="button btn btn-success btn-large" /></td>
+                <td class="login-actions"><input type="submit" name="delete" value="Radera" class="button btn btn-success" /></td>
             </tr>
         
         </table>
     </form>
-    <a href="minakurser_search.php">Tillbaka</a>
+    <i><a href="minakurser_search.php">Tillbaka</a></i>
 
     
     </div> <!-- class content clearfix -->

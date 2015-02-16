@@ -15,7 +15,7 @@
             
             <h2>Ändra kurs</h2>
            <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>
-            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.<br><br><br></i>
+            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.<br><br></i>
 
 <?php
 
@@ -60,25 +60,25 @@ $msg = "";
             $id = $_POST['id'];
      
         if (empty($_POST["status"])) {
-			$statusErr = "Status is required";
+			$statusErr = "Status krävs";
 		}
         if (!preg_match("/^[0-9 -]*$/",$startdate)) {
-			$startErr = "Only yyyy-mm-dd format is allowed"; 
+			$startErr = "Endast ÅÅÅÅ-MM-DD format tillåts"; 
 		}
         if (empty($_POST["startdate"])) {
-			$startErr = "Startdate is required";
+			$startErr = "Startdatum krävs";
 	    }
         if (!preg_match("/^[0-9 -]*$/",$enddate)) {
-			$endErr = "Only yyyy-mm-dd format is allowed"; 
+			$endErr = "Endast ÅÅÅÅ-MM-DD format tillåts"; 
 		}
         if (empty($_POST["enddate"])) {
-			$endErr = "Enddate is required";
+			$endErr = "Slutdatum krävs";
 	    }
         /*if (!preg_match("/^[0-9]*$/",$rating)) {
 			$ratingErr = "Only numbers is allowed"; 
 		}*/
         if (empty($_POST["rating"])) {
-			$ratingErr = "Rating is required";
+			$ratingErr = "Poäng krävs";
 	    } 
 if(empty($statusErr) && empty($startErr) && empty($endErr) && empty($ratingErr))
 
@@ -98,7 +98,7 @@ if(empty($statusErr) && empty($startErr) && empty($endErr) && empty($ratingErr))
                     ));
 
                 if ($result) {
-                 echo "Course updated";
+                 echo "<i>Kurs uppdaterad</i><br><br>";
                 }else {
                  echo "Failed ";
                 }

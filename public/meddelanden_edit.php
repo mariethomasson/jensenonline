@@ -61,19 +61,19 @@ $classErr = $headlineErr = $contentErr = '';
             $id = $_POST['id'];
      
         if (empty($class)) {
-			$classErr = "Class is required";
+			$classErr = "Klass krävs";
 		}
         
         if (empty($headline)) {
-			$headlineErr = "Headline is required";
+			$headlineErr = "Rubrik krävs";
 		}
         
         if (empty($content)) {
-			$contentErr = "Content is required";
+			$contentErr = "Text krävs";
 		}
         
         if(strlen($headline) > 80){
-            $headlineErr = "The headline can't be longer than 80 characters";
+            $headlineErr = "Rubriken får inte vara längre än 80 tecken";
         }
         
         if (empty($classErr) && empty($headlineErr) && empty($contentErr)) {
@@ -93,7 +93,7 @@ $classErr = $headlineErr = $contentErr = '';
                     ));
 
                 if ($result) {
-                 echo "Post updated";
+                 echo "<i>Meddelandet är ändrat</i><br><br>";
                 }else {
                  echo "Failed ";
                 }

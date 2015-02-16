@@ -42,46 +42,46 @@ if(isset($_POST["submit"])){
         $re_password  = trim($_POST["re_password"]);
 	
 		if (empty($_POST["title"])) {
-			$titleErr = "Title is required";
+			$titleErr = "Titel krävs";
 		}
         if (empty($_POST["class"])) {
-			$classErr = "Class is required";
+			$classErr = "Klass krävs";
 		}
         if (!preg_match("/^[A-Za-z åäöÅÄÖ ´`-]*$/",$firstname)) {
-			$firstErr = "Only letters are allowed"; 
+			$firstErr = "Endast bokstäver tillåts"; 
 		}
         if (empty($_POST["firstname"])) {
-			$firstErr = "Firstname is required";
+			$firstErr = "Förnamn krävs";
 		}
         if (!preg_match("/^[A-Za-z åäöÅÄÖ ´`-]*$/",$lastname)) {
-			$lastErr = "Only letters are allowed"; 
+			$lastErr = "Endast bokstäver tillåts"; 
 		}
         if (empty($_POST["lastname"])) {
-			$lastErr = "Lastname is required";
+			$lastErr = "Efternamn krävs";
 		}
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$emailErr = "Invalid email format"; 
+			$emailErr = "Felaktigt e-postformat"; 
 		}
 	    if (empty($_POST["email"])) {
-			$emailErr = "Email is required";
+			$emailErr = "E-post krävs";
 	    }
         if (!preg_match("/^[A-Za-z0-9]*$/",$username)) {
-			$userErr = "Only letters and numbers are allowed"; 
+			$userErr = "Endast bokstäver och siffror tillåts"; 
 		}
         if (empty($_POST["username"])) {
-			$userErr = "Username is required";
+			$userErr = "Användarnamn krävs";
 	    }
         if (!preg_match("/^[A-Za-z0-9]*$/",$password)) {
-			$passErr = "Only letters and numbers are allowed"; 
+			$passErr = "Endast bokstäver och siffror tillåts"; 
 		}
 	    if (empty($_POST["password"])) {
-			$passErr = "Password is required";
+			$passErr = "Lösenord krävs";
 	    }
         if (empty($_POST["re_password"])) {
-			$rePassErr = "Re-entered password is required";
+			$rePassErr = "Upprepa lösenordet";
 	    } 
         if($re_password!=$password) {
-            $rePassErr = "The re-entered password don't match";
+            $rePassErr = "Lösenorden stämmer inte överens";
         }
     
         try{
@@ -103,13 +103,13 @@ if(isset($_POST["submit"])){
                 if($email){	
                     if ($result ['email']== $email) {
                         $_SESSION["email"] = $result['email'];
-                        $emailErr = "Email already exist. Please create a new email.<br /><br />";
+                        $emailErr = "Denna e-post finns redan.<br /><br />";
                     } 
                 } 
                 if($username){	
                     if ($result ['username']== $username) {
                         $_SESSION["username"] = $result['username'];
-                        $userErr = "Username already exist. Please create a new username.<br /><br />";
+                        $userErr = "Detta användarnamn finns redan.<br /><br />";
                     } 
                 } 
                 
@@ -153,7 +153,7 @@ if(isset($_POST["submit"])){
             ));
 
                 if ($result) {
-                    $_SESSION['msg'] = "Signup succeeded";
+                    $_SESSION['msg'] = "<br><i>Ny användare tillagd</i>";
                 //header("Location: login.php");
             }else {
                  $_SESSION['msg'] = "Signup failed";
@@ -235,7 +235,7 @@ if(isset($_POST["submit"])){
                 <td><input type="text" name="mobile" value="<?php echo $mobile; ?>"/></td>
             </tr>
             <tr>
-                <td>Username </td>
+                <td>Användarnamn </td>
                 <td><input type="text" name="username" value="<?php echo $username; ?>"/><span class="error"> * <?php echo $userErr; ?></span></td>
             </tr>
             <tr>

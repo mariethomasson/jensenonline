@@ -15,7 +15,7 @@
             
             <h2>Ändra användare</h2>
            <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>
-            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.<br><br><br></i>
+            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.<br><br></i>
 
 <?php
 
@@ -60,13 +60,13 @@ $msg = "";
             $skype = $_POST['skype'];
      
      if (empty($_POST["class"])) {
-			$classErr = "Class is required";
+			$classErr = "Klass krävs";
 		}   
      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$emailErr = "Invalid email format"; 
+			$emailErr = "Felaktigt e-postformat"; 
 		}
 	    if (empty($_POST["email"])) {
-			$emailErr = "Email is required";
+			$emailErr = "E-post krävs";
         }
      
 if(empty($classErr) && empty($emailErr))
@@ -87,7 +87,7 @@ if(empty($classErr) && empty($emailErr))
                     ));
 
                 if ($result) {
-                 echo "User updated";
+                 echo "<i>Användare uppdaterad</i><br><br>";
                 }else {
                  echo "Failed ";
                 }
@@ -116,7 +116,7 @@ if(empty($classErr) && empty($emailErr))
                 <td class="field"><input type="text" name="class"  id="class" value="<?php echo $class;?>" /><span class="error"> * <?php echo $classErr; ?></td>
             </tr>
             <tr>
-                <td>Email</td>
+                <td>E-post</td>
                 <td class="field"><input type="text" name="email" id="email" value="<?php echo $email;?>" /><span class="error"> * <?php echo $emailErr; ?></span></td>
             </tr>
             <tr>

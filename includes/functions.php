@@ -168,19 +168,19 @@ function add_post(){
         $class = $_POST['class'];
         
         if (empty($_POST["class"])) {
-			$classErr = "Class is required";
+			$classErr = "Klass krävs";
 		}
         
         if (empty($headline)) {
-			$headlineErr = "Headline is required";
+			$headlineErr = "Rubrik krävs";
 		}
         
         if (empty($content)) {
-			$contentErr = "Content is required";
+			$contentErr = "Text krävs";
 		}
         
         if(strlen($headline) > 80){
-            $headlineErr = "The headline can't be longer than 80 characters";
+            $headlineErr = "Rubriken får inte vara längre än 80 tecken";
         }
         
         if (empty($classErr) &&  empty($headlineErr) && empty($contentErr)) {
@@ -200,7 +200,7 @@ function add_post(){
             ));
         
             if($result){
-                echo "New post created";
+                echo "<i>Nytt inlägg postat</i><br><br>";
             }else{
                 echo "Couldn't create new post";
                 }
