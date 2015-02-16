@@ -15,7 +15,7 @@
             
             <h2>Ändra användare</h2>
            <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>
-
+            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.<br><br><br></i>
 
 <?php
 
@@ -45,6 +45,9 @@
             echo $exception. "<br /> <br />";
         }
     }
+
+$emailErr = $classErr = "";
+$msg = "";
   
  if(isset($_POST['update'])) {
   
@@ -55,7 +58,19 @@
             $email = $_POST['email'];
             $mobile = $_POST['mobile'];
             $skype = $_POST['skype'];
-
+     
+     if (empty($_POST["class"])) {
+			$classErr = "Class is required";
+		}   
+     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			$emailErr = "Invalid email format"; 
+		}
+	    if (empty($_POST["email"])) {
+			$emailErr = "Email is required";
+        }
+     
+if(empty($classErr) && empty($emailErr))
+    
     try{  
             $query = "UPDATE users ";
             $query .= "SET class = :class, email = :email, mobile = :mobile, skype = :skype ";
@@ -87,40 +102,40 @@
 ?>
 
     <form action="minklass_edit.php" method="POST" >
-        <table class="table">
-            <tr class= "login-fields">
-                <td>Förnamn: </td>
+        <table>
+            <tr>
+                <td>Förnamn</td>
                 <td class="field"><input type="text" readonly="" name="firstname"  id="firstname" value="<?php echo $firstname;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Efternamn: </td>
+            <tr>
+                <td>Efternamn</td>
                 <td class="field"><input type="text" readonly="" name="lastname" class="login username-field" id="lastname"value="<?php echo $lastname;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Klass: </td>
-                <td class="field"><input type="text" name="class"  id="class" value="<?php echo $class;?>" /></td>
+            <tr>
+                <td>Klass</td>
+                <td class="field"><input type="text" name="class"  id="class" value="<?php echo $class;?>" /><span class="error"> * <?php echo $classErr; ?></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Email: </td>
-                <td class="field"><input type="text" name="email" id="email" value="<?php echo $email;?>" /></td>
+            <tr>
+                <td>Email</td>
+                <td class="field"><input type="text" name="email" id="email" value="<?php echo $email;?>" /><span class="error"> * <?php echo $emailErr; ?></span></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Mobil: </td>
+            <tr>
+                <td>Mobil</td>
                 <td class="field"><input type="text" name="mobile" id="mobile" value="<?php echo $mobile;?>" /></td>
             </tr>
-            <tr class= "login-fields">
-                <td>Skype: </td>
+            <tr>
+                <td>Skype</td>
                 <td class="field"><input type="text" name="skype" id="skype" value="<?php echo $skype;?>" /></td>
             </tr>
             <tr>
                 <input type='hidden' name='id' value=<?php echo $id;?> />
-                <td class="login-actions"><input type="submit" name="update" value="Uppdatera" class="button btn btn-success btn-large" /></td>
+                <td class="login-actions"><input type="submit" name="update" value="Uppdatera" class="button btn btn-success " /></td>
             </tr>
         
         </table>
 
     </form>
-<a href="minklass_search.php">Tillbaka</a>
+<i><a href="minklass_search.php">Tillbaka</a></i>
     
     </div> <!-- class content clearfix -->
  </div> <!--class container --> 

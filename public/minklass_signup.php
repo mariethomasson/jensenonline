@@ -15,6 +15,7 @@
     <div class="account-container">
         <div class="content clearfix">
         <h2>Lägg till användare</h2>
+        <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>
     
     <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i>
 
@@ -178,7 +179,7 @@ if(isset($_POST["submit"])){
 <form action="minklass_signup.php" method="POST" >
         <table>
             <tr>
-                <th><label for="title">Titel: </label></th>
+                <td>Titel</label></td>
                 <td>
                 <select name="title" id="title" >
                     <option value="">-- Välj --</option>
@@ -189,7 +190,7 @@ if(isset($_POST["submit"])){
                 <td><span class="error"> * <?php echo $titleErr; ?></span></td>
             </tr>
             <tr>
-                <th><label for="class">Klass: </label></th>
+                <td>Klass</label></td>
                 <td>
                 <select name="class" id="class">
                     <option value="">-- Välj --</option>
@@ -238,23 +239,23 @@ if(isset($_POST["submit"])){
                 <td><input type="text" name="username" value="<?php echo $username; ?>"/><span class="error"> * <?php echo $userErr; ?></span></td>
             </tr>
             <tr>
-                <td>Password </td>
+                <td>Lösenord </td>
                 <td><input type="password" name="password" value="<?php echo $password; ?>" /><span class="error"> * <?php echo $passErr; ?></span></td>
             </tr>
             <tr>
-			<td>Re-password:</td>
+			<td>Upprepa lösenord</td>
 			<td><input type="password" name="re_password" /><span class="error"> * <?php echo $rePassErr; ?></span></td>
 		</tr>
 
 <?php echo $_SESSION['msg']; ?><br /><br />
             
             <tr>
-                <td><input type="submit" name="submit" value="Signup" /></td>
+                <td><input type="submit" name="submit" value="Lägg till" class="button btn btn-success "/></td>
             </tr>
             
         </table>
     </form>            
-       <a href="minklass.php">Tillbaks till klasslistan</a>
+       <i><a href="minklass.php">Tillbaka till klasslistan</a></i>
 
     </div> <!-- class content clearfix -->
  </div> <!--class container --> 
