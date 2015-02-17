@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Klasslista";
+    $pageTitle = "Min klass";
     $section = "minklass";
 ?>
 
@@ -35,6 +35,7 @@
             $id = $posts['id'];    
             $lastname = $posts['lastname'];
             $firstname = $posts['firstname'];
+            $title = $posts['title'];
             $class = $posts['class'];
             $email = $posts['email'];
             $mobile = $posts['mobile'];
@@ -46,7 +47,7 @@
         }
     }
 
-$emailErr = $classErr = "";
+$firstErr = $lastErr = $emailErr = $classErr = $titleErr = "";
 $msg = "";
   
  if(isset($_POST['update'])) {
@@ -54,31 +55,50 @@ $msg = "";
             $id = $_POST['id'];    
             $lastname = $_POST['lastname'];
             $firstname = $_POST['firstname'];
+            $title = $_POST['title'];
             $class = $_POST['class'];
             $email = $_POST['email'];
             $mobile = $_POST['mobile'];
             $skype = $_POST['skype'];
      
-     if (empty($_POST["class"])) {
+    if (!preg_match("/^[A-Za-z åäöÅÄÖ ´`-]*$/",$firstname)) {
+			$firstErr = "Endast bokstäver tillåts"; 
+		}
+    if (empty($_POST["firstname"])) {
+			$firstErr = "Förnamn krävs";
+		}
+    if (!preg_match("/^[A-Za-z åäöÅÄÖ ´`-]*$/",$lastname)) {
+			$lastErr = "Endast bokstäver tillåts"; 
+		}
+    if (empty($_POST["lastname"])) {
+			$lastErr = "Efternamn krävs";
+		}
+    if (empty($_POST["title"])) {
+			$titleErr = "Titel krävs";
+        }
+    if (empty($_POST["class"])) {
 			$classErr = "Klass krävs";
 		}   
-     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			$emailErr = "Felaktigt e-postformat"; 
 		}
-	    if (empty($_POST["email"])) {
+     if (empty($_POST["email"])) {
 			$emailErr = "E-post krävs";
         }
      
-if(empty($classErr) && empty($emailErr))
+if(empty($firstErr) && empty($lastErr) && empty($titleErr) && empty($classErr) && empty($emailErr))
     
     try{  
             $query = "UPDATE users ";
-            $query .= "SET class = :class, email = :email, mobile = :mobile, skype = :skype ";
+            $query .= "SET firstname = :firstname, lastname = :lastname, title = :title, class = :class, email = :email, mobile = :mobile, skype = :skype ";
             $query .= "WHERE id = :id"; 
 
             $ps = $db->prepare($query); 
             $result = $ps->execute(
                 array (
+                    'firstname'=>$firstname,
+                    'lastname'=>$lastname,
+                    'title'=>$title,
                     'class'=>$class, 
                     'email'=>$email, 
                     'mobile'=>$mobile,
@@ -105,15 +125,35 @@ if(empty($classErr) && empty($emailErr))
         <table>
             <tr>
                 <td>Förnamn</td>
-                <td class="field"><input type="text" readonly="" name="firstname"  id="firstname" value="<?php echo $firstname;?>" /></td>
+                <td class="field"><input type="text" name="firstname"  id="firstname" value="<?php echo $firstname;?>" /><span class="error"> * <?php echo $firstErr; ?></span></td>
             </tr>
             <tr>
                 <td>Efternamn</td>
-                <td class="field"><input type="text" readonly="" name="lastname" class="login username-field" id="lastname"value="<?php echo $lastname;?>" /></td>
+                <td class="field"><input type="text" name="lastname" class="login username-field" id="lastname"value="<?php echo $lastname;?>" /><span class="error"> * <?php echo $lastErr; ?></span></td>
+            </tr>
+            <tr>
+                <td>Titel</label></td>
+                <td>
+                <select name="title" id="title" >
+                    <option value="">-- Välj --</option>
+                    <option value="Student" <?php echo ($title == "Student") ? "selected" : ""; ?>>Elev</option>
+                    <option value="Staff" <?php echo ($title == "Staff") ? "selected" : ""; ?>>Lärare</option>
+                    <option value="Admin" <?php echo ($title == "Admin") ? "selected" : ""; ?>>Admin</option>
+                </td>
+                <td><span class="error"> * <?php echo $titleErr; ?></span></td>
             </tr>
             <tr>
                 <td>Klass</td>
-                <td class="field"><input type="text" name="class"  id="class" value="<?php echo $class;?>" /><span class="error"> * <?php echo $classErr; ?></td>
+                <td>
+                <select name="class" id="class">
+                    <option value="">-- Välj --</option>
+                    <option value="CBK14" <?php echo ($class == "CBK14") ? "selected" : ""; ?>>CBK14</option>
+                    <option value="IPK14" <?php echo ($class == "IPK14") ? "selected" : ""; ?>>IPK14</option>
+                    <option value="PTK14" <?php echo ($class == "PTK14") ? "selected" : ""; ?>>PTK14</option>
+                    <option value="WUK14" <?php echo ($class == "WUK14") ? "selected" : ""; ?>>WUK14</option>
+                    <option value="Jensen" <?php echo ($class == "Jensen") ? "selected" : ""; ?>>Jensen</option>
+                </td>
+                <td><span class="error">* <?php echo $classErr; ?></span></td>
             </tr>
             <tr>
                 <td>E-post</td>

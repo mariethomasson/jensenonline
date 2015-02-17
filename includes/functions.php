@@ -123,7 +123,7 @@
     function show_all_courses($myClass){    //används på minakurser.php
         global $db; 
         try{
-            $query = "SELECT * FROM courses WHERE class='CBK14' OR class='IPK14' OR class='PTK14' OR class='WUK14'";
+            $query = "SELECT * FROM courses WHERE class='CBK14' OR class='IPK14' OR class='PTK14' OR class='WUK14' OR class='Jensen'";
 
             $ps = $db->prepare($query);
             $result = $ps->execute(array());

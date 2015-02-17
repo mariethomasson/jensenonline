@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Redigera Meddelande";
+    $pageTitle = "Meddelanden";
     $section = "redigera_meddelanden";
 ?>
 
@@ -115,7 +115,7 @@ $classErr = $headlineErr = $contentErr = '';
                     <td><h3>Rubrik:</h3></td>
                 </tr>
                 <tr>
-                    <td><span class="error"> * <?php echo $headlineErr; ?></span><input type="text-field" id="headline" name="headline" class='span6' value="<?php echo $headline;?>"/>
+                    <td><span class="error"> * <?php echo $headlineErr; ?></span><br><input type="text-field" id="headline" name="headline" class='span6' value="<?php echo $headline;?>"/>
                     </td>
                 </tr>
                 <tr>
@@ -126,11 +126,11 @@ $classErr = $headlineErr = $contentErr = '';
                     <td>
                         <select name="class" id="class" >
                             <option value="">-- Välj --</option>
-                            <option value="CBK14">CBK14</option>
-                            <option value="IPK14">IPK14</option>
-                            <option value="PTK14">PTK14</option>
-                            <option value="WUK14">WUK14</option>
-                            <option value="Jensen">Jensen</option>
+                            <option value="CBK14" <?php echo ($class == "CBK14") ? "selected" : ""; ?>>CBK14</option>
+                            <option value="IPK14" <?php echo ($class == "IPK14") ? "selected" : ""; ?>>IPK14</option>
+                            <option value="PTK14" <?php echo ($class == "PTK14") ? "selected" : ""; ?>>PTK14</option>
+                            <option value="WUK14" <?php echo ($class == "WUK14") ? "selected" : ""; ?>>WUK14</option>
+                            <option value="Jensen" <?php echo ($class == "Jensen") ? "selected" : ""; ?>>Jensen</option>
                     </td>
                 </tr>
                 <tr>

@@ -59,8 +59,14 @@ $msg = "";
             $rating = $_POST['rating'];
             $id = $_POST['id'];
      
+        if (empty($_POST["class"])) {
+			$classErr = "Klass krävs";
+		}
         if (empty($_POST["status"])) {
 			$statusErr = "Status krävs";
+		}
+        if (empty($_POST["course"])) {
+			$courseErr = "Kurs krävs";
 		}
         if (!preg_match("/^[0-9 -]*$/",$startdate)) {
 			$startErr = "Endast ÅÅÅÅ-MM-DD format tillåts"; 
@@ -80,17 +86,19 @@ $msg = "";
         if (empty($_POST["rating"])) {
 			$ratingErr = "Poäng krävs";
 	    } 
-if(empty($statusErr) && empty($startErr) && empty($endErr) && empty($ratingErr))
+if(empty($classErr) && empty($statusErr) && empty($courseErr) && empty($startErr) && empty($endErr) && empty($ratingErr))
 
     try{  
             $query = "UPDATE courses ";
-            $query .= "SET status = :status, startdate = :startdate, enddate = :enddate, rating = :rating ";
+            $query .= "SET class = :class, status = :status, course = :course, startdate = :startdate, enddate = :enddate, rating = :rating ";
             $query .= "WHERE id = :id"; 
 
             $ps = $db->prepare($query); 
             $result = $ps->execute(
                 array (
+                    'class'=>$class, 
                     'status'=>$status, 
+                    'course'=>$course, 
                     'startdate'=>$startdate, 
                     'enddate'=>$enddate,
                     'rating'=>$rating,
@@ -116,15 +124,31 @@ if(empty($statusErr) && empty($startErr) && empty($endErr) && empty($ratingErr))
         <table>
             <tr>
                 <td>Klass</td>
-                <td><input type="text" readonly="" name="class"  id="username" value="<?php echo $class;?>" /></td>
-            </tr>
-            <tr>
-                <td>Kurs</td>
-                <td><input type="text" readonly="" name="course" class="login username-field" id="username"value="<?php echo $course;?>" /></td>
+                <td>
+                <select name="class" id="class">
+                    <option value="">-- Välj --</option>
+                    <option value="CBK14" <?php echo ($class == "CBK14") ? "selected" : ""; ?>>CBK14</option>
+                    <option value="IPK14" <?php echo ($class == "IPK14") ? "selected" : ""; ?>>IPK14</option>
+                    <option value="PTK14" <?php echo ($class == "PTK14") ? "selected" : ""; ?>>PTK14</option>
+                    <option value="WUK14" <?php echo ($class == "WUK14") ? "selected" : ""; ?>>WUK14</option>
+                    <option value="Jensen" <?php echo ($class == "Jensen") ? "selected" : ""; ?>>Jensen</option>
+                </td>
+                <td><span class="error"> * <?php echo $classErr; ?></span></td>
             </tr>
             <tr>
                 <td>Status</td>
-                <td><input type="text" name="status"  id="status" value="<?php echo $status;?>" /><span class="error"> * <?php echo $statusErr; ?></span></td>
+                <td>
+                <select name="status" id="status" >
+                    <option value="">-- Välj --</option>
+                    <option value="Kommande" <?php echo ($status == "Kommande") ? "selected" : ""; ?>>Kommande</option>
+                    <option value="Pågående" <?php echo ($status == "Pågående") ? "selected" : ""; ?>>Pågående</option>
+                    <option value="Avslutad" <?php echo ($status == "Avslutad") ? "selected" : ""; ?>>Avslutad</option>
+                </td>
+                <td><span class="error"> * <?php echo $statusErr; ?></span></td>
+            </tr>
+            <tr>
+                <td>Kurs</td>
+                <td><input type="text" name="course" class="login username-field" id="username"value="<?php echo $course;?>" /><span class="error"> * <br><?php echo $courseErr; ?></span></td>
             </tr>
             <tr>
                 <td>Startdatum</td>

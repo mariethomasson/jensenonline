@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Search Course";
+    $pageTitle = "Mina kurser";
     $section = "search";
 ?>
 

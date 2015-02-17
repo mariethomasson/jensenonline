@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Sign up";
+    $pageTitle = "Mina kurser";
     $section = "signup";
 ?>
 
@@ -108,11 +108,11 @@ if(isset($_POST["submit"])){
                 <td>
                 <select name="class" id="class">
                     <option value="">-- Välj --</option>
-                    <option value="CBK14">CBK14</option>
-                    <option value="IPK14">IPK14</option>
-                    <option value="PTK14">PTK14</option>
-                    <option value="WUK14">WUK14</option>
-                    <option value="Jensen">Jensen</option>
+                    <option value="CBK14" <?php echo ($class == "CBK14") ? "selected" : ""; ?>>CBK14</option>
+                    <option value="IPK14" <?php echo ($class == "IPK14") ? "selected" : ""; ?>>IPK14</option>
+                    <option value="PTK14" <?php echo ($class == "PTK14") ? "selected" : ""; ?>>PTK14</option>
+                    <option value="WUK14" <?php echo ($class == "WUK14") ? "selected" : ""; ?>>WUK14</option>
+                    <option value="Jensen" <?php echo ($class == "Jensen") ? "selected" : ""; ?>>Jensen</option>
                 </td>
                 <td><span class="error">* <?php echo $classErr; ?></span></td>
             </tr>
@@ -121,9 +121,9 @@ if(isset($_POST["submit"])){
                 <td>
                 <select name="status" id="status" >
                     <option value="">-- Välj --</option>
-                    <option value="Kommande">Kommande</option>
-                    <option value="Pågående">Pågående</option>
-                    <option value="Avslutad">Avslutad</option>
+                    <option value="Kommande" <?php echo ($status == "Kommande") ? "selected" : ""; ?>>Kommande</option>
+                    <option value="Pågående" <?php echo ($status == "Pågående") ? "selected" : ""; ?>>Pågående</option>
+                    <option value="Avslutad" <?php echo ($status == "Avslutad") ? "selected" : ""; ?>>Avslutad</option>
                 </td>
                 <td><span class="error"> * <?php echo $statusErr; ?></span></td>
             </tr>

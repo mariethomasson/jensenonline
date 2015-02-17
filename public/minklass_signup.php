@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Sign up";
+    $pageTitle = "Min klass";
     $section = "signup";
 ?>
 
@@ -183,9 +183,9 @@ if(isset($_POST["submit"])){
                 <td>
                 <select name="title" id="title" >
                     <option value="">-- Välj --</option>
-                    <option value="Student">Elev</option>
-                    <option value="Staff">Lärare</option>
-                    <option value="Admin">Admin</option>
+                    <option value="Student" <?php echo ($title == "Student") ? "selected" : ""; ?>>Elev</option>
+                    <option value="Staff" <?php echo ($title == "Staff") ? "selected" : ""; ?>>Lärare</option>
+                    <option value="Admin" <?php echo ($title == "Admin") ? "selected" : ""; ?>>Admin</option>
                 </td>
                 <td><span class="error"> * <?php echo $titleErr; ?></span></td>
             </tr>
@@ -194,11 +194,11 @@ if(isset($_POST["submit"])){
                 <td>
                 <select name="class" id="class">
                     <option value="">-- Välj --</option>
-                    <option value="CBK14">CBK14</option>
-                    <option value="IPK14">IPK14</option>
-                    <option value="PTK14">PTK14</option>
-                    <option value="WUK14">WUK14</option>
-                    <option value="Jensen">Jensen</option>
+                    <option value="CBK14" <?php echo ($class == "CBK14") ? "selected" : ""; ?>>CBK14</option>
+                    <option value="IPK14" <?php echo ($class == "IPK14") ? "selected" : ""; ?>>IPK14</option>
+                    <option value="PTK14" <?php echo ($class == "PTK14") ? "selected" : ""; ?>>PTK14</option>
+                    <option value="WUK14" <?php echo ($class == "WUK14") ? "selected" : ""; ?>>WUK14</option>
+                    <option value="Jensen" <?php echo ($class == "Jensen") ? "selected" : ""; ?>>Jensen</option>
                 </td>
                 <td><span class="error">* <?php echo $classErr; ?></span></td>
             </tr>

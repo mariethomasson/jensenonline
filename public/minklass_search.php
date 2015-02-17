@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Search class";
+    $pageTitle = "Min klass";
     $section = "searchclass";
 ?>
 

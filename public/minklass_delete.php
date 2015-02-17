@@ -1,5 +1,5 @@
 <?php
-    $pageTitle = "Klasslista";
+    $pageTitle = "Min klass";
     $section = "minklass";
 ?>
 
