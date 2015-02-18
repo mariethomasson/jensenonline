@@ -13,7 +13,7 @@
     <div class="container">
       <div class='row'>
           <div class='span12 headline'>
-                <h2>Välkommen till Jensen Online</h2>
+                <h2 id="welcome">Välkommen till Jensen Online</h2>
                 <?php echo logged_in(); ?>
             </div> <!--span12-->
           </div> <!--row-->

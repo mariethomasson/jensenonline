@@ -281,13 +281,19 @@ margin-bottom: 26px;}
 @media (min-width: 1px) and (max-width: 480px) {
     #shortcutMenu {
     display: none;
-    }   
+    }  
+    .span12 headline h2 {
+        font-size: 80%;
+    }
 }
 
 @media (min-width: 481px) and (max-width: 768px){
     #shortcutMenu {
     display: none;
     } 
+    .span12 headline h2 {
+        font-size: 80%;
+    }
 }
 
 
