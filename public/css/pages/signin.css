@@ -264,4 +264,15 @@ label {
     border: none;
 }
 
+/* Maries responsive css */
+
+@media (min-width: 1px) and (max-width: 480px) {
+    .footer, .footer-inner {
+        position: none;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+    
+}
 
