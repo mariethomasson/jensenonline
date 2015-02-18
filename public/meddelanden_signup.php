@@ -26,12 +26,21 @@
 
 
 <?php 
+
+
 $errors = add_post();
 $headlineErr = $errors[0];
 $contentErr = $errors[1];
 $classErr = $errors[2];
 $headline = $content = $class = '';
+
+    if(isset($_POST['submit'])){
+        $class = $_POST['class'];
+     }
+
 ?>
+                
+
                
 <div class="row">
     <div class="span9">
@@ -69,7 +78,7 @@ $headline = $content = $class = '';
                         <textarea id="content" name="content" class="form-control span9" rows="10" value="<?php echo $content; ?>"></textarea></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Posta inlägg" name="submit" class="button btn btn-success btn-large"/></td>
+                    <td><input type="submit" value="Posta inlägg" name="submit" class="button btn btn-success"/></td>
 	           </tr>
 	       </table>
         </form>
