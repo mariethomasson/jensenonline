@@ -282,8 +282,8 @@ margin-bottom: 26px;}
     #shortcutMenu {
     display: none;
     }  
-    .span12 headline h2 {
-        font-size: 80%;
+    #welcome {
+        font-size: 140%;
     }
 }
 
@@ -291,9 +291,10 @@ margin-bottom: 26px;}
     #shortcutMenu {
     display: none;
     } 
-    .span12 headline h2 {
-        font-size: 80%;
+    #welcome {
+        font-size: 140%;
     }
+    
 }
 
 
