@@ -85,12 +85,11 @@ if(isset($_POST["submit"])){
         }
     
         try{
-            require_once("../includes/db_connect.php");
 
             $query = "SELECT * ";
             $query .= "FROM users ";
             $query .= "WHERE email = :email ";
-            $query .= "AND username = :username ";
+            $query .= "OR username = :username ";
 
             $ps = $db->prepare($query); 
             $result = $ps->execute(
@@ -102,18 +101,17 @@ if(isset($_POST["submit"])){
 
                 if($email){	
                     if ($result ['email']== $email) {
-                        $_SESSION["email"] = $result['email'];
-                        $emailErr = "Denna e-post finns redan.<br /><br />";
+                        $_SESSION['email'] = $result['email'];
+                        $emailErr = "Denna e-post finns redan, vänligen välj en ny.<br /><br />";
                     } 
                 } 
                 if($username){	
                     if ($result ['username']== $username) {
-                        $_SESSION["username"] = $result['username'];
-                        $userErr = "Detta användarnamn finns redan.<br /><br />";
+                        $_SESSION['username'] = $result['username'];
+                        $userErr = "Detta användarnamn finns redan, vänligen välj ett nytt.<br /><br />";
                     } 
                 } 
                 
-
         } catch(Exception $exception) {
             echo "Query failed, see error message below: <br /><br />";
             echo $exception. "<br /> <br />";

@@ -86,6 +86,31 @@ $msg = "";
 			$emailErr = "E-post krävs";
         }
      
+     try{
+
+            $query = "SELECT * ";
+            $query .= "FROM users ";
+            $query .= "WHERE email = :email ";
+
+            $ps = $db->prepare($query); 
+            $result = $ps->execute(
+                array(
+                    'email'=>$email
+                ));
+            $result = $ps->fetch(PDO::FETCH_ASSOC);
+
+                if($email){	
+                    if ($result ['email']== $email) {
+                        $_SESSION['email'] = $result['email'];
+                        $emailErr = "Denna e-post finns redan, vänligen välj en ny.<br /><br />";
+                    } 
+                } 
+                
+        } catch(Exception $exception) {
+            echo "Query failed, see error message below: <br /><br />";
+            echo $exception. "<br /> <br />";
+        }
+     
 if(empty($firstErr) && empty($lastErr) && empty($titleErr) && empty($classErr) && empty($emailErr))
     
     try{  
