@@ -14,13 +14,13 @@
         <div class="content clearfix">
             <h2>Min profil</h2>
     
-           <h4>Här kan du ändra dina uppgifter</h4>
-            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i>
+           <h4>Här kan du ändra dina uppgifter</h4><br>
+            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i><br><br>
 
 <?php
 //php for the first form, updating profile.
 $title = $class = $firstname = $lastname = $address = $postnumber = $postaddress = $email = $phone = $mobile = $username = $password = $re_password = "" ;
-	$titleErr = $classErr = $firstErr = $lastErr = $emailErr = $userErr = $passErr = $rePassErr = "";
+$titleErr = $classErr = $firstErr = $lastErr = $emailErr = $userErr = $passErr = $rePassErr = $addressErr = $skypeErr = $postaErr = $postnErr = $phoneErr = $mobileErr = "";
 $msg = "";
 
     $firstname = $_SESSION['firstname'];
@@ -44,9 +44,27 @@ $msg = "";
         $mobile       = trim($_POST['mobile']);
         $skype        = trim($_POST['skype']);
         
+        if (!preg_match("/^[A-Za-z0-9 åäöÅÄÖ ´`-]*$/",$address)) {
+			$addressErr = "* Endast bokstäver och siffror tillåts"; 
+		}
+        if (!preg_match("/^[0-9 -]*$/",$postnumber)) {
+			$postnErr = "* Endast siffror tillåts"; 
+		}
+        if (!preg_match("/^[A-Za-z åäöÅÄÖ ´`-]*$/",$postaddress)) {
+			$postaErr = "* Endast bokstäver tillåts"; 
+		}
         if (empty($_POST["email"])) {
-			$emailErr = "Email is required";
+			$emailErr = "E-post krävs";
 	    }
+        if (!preg_match("/^[0-9 -]*$/",$phone)) {
+			$phoneErr = "* Endast siffror tillåts"; 
+		}
+        if (!preg_match("/^[0-9 -]*$/",$mobile)) {
+			$mobileErr = "* Endast siffror tillåts"; 
+		}
+         if (!preg_match("/^[A-Za-z0-9 åäöÅÄÖ ´`-]*$/",$skype)) {
+			$skypeErr = "* Endast bokstäver och siffror tillåts"; 
+		}
 
     try{
         require_once("../includes/db_connect.php"); 
@@ -68,7 +86,7 @@ $msg = "";
                     ));
 
                 if ($result) {
-                 echo "User updated";
+                 echo "<i>Din profil är uppdaterad</i><br><br>";
                 }else {
                  echo "Failed ";
                 }
@@ -114,7 +132,7 @@ $msg = "";
 				
 				//you can use move_uploaded_file() to move and rename the temp file
                 if( move_uploaded_file($fileTempName, $newPathAndName)  ){
-                    echo "The file has been successfully uploaded<br /><br />";
+                    echo "<i>Filen är uppladdad</i><br /><br />";
 					/*
 					$myFile = $newPathAndName;
 					$fh = fopen($myFile, 'r');
@@ -135,44 +153,44 @@ $msg = "";
     <form action="profile.php" method="POST" >
         <table>
             <tr>
-                <td>Förnamn: </td>
+                <td>Förnamn</td>
                 <td class="field"><input type="text" readonly="" name="firstname"  id="username" value="<?php echo $firstname;?>" /></td>
             </tr>
             <tr>
-                <td>Efternamn: </td>
+                <td>Efternamn</td>
                 <td class="field"><input type="text" readonly="" name="lastname" class="login username-field" id="username"value="<?php echo $lastname;?>" /></td>
             </tr>
             <tr>
-                <td>Adress: </td>
-                <td class="field"><input type="text" name="address"  id="username" value="<?php echo $address;?>" /></td>
+                <td>Adress</td>
+                <td class="field"><input type="text" name="address"  id="username" value="<?php echo $address;?>" /><?php echo $addressErr; ?></td>
             </tr>
             <tr>
-                <td>Postnummer: </td>
-                <td class="field"><input type="text" name="postnumber" id="username" value="<?php echo $postnumber;?>" /></td>
+                <td>Postnummer</td>
+                <td class="field"><input type="text" name="postnumber" id="username" value="<?php echo $postnumber;?>" /><?php echo $postnErr; ?></td>
             </tr>
             <tr>
-                <td>Postadress: </td>
-                <td class="field"><input type="text" name="postaddress" id="username" value="<?php echo $postaddress;?>" /></td>
+                <td>Postadress</td>
+                <td class="field"><input type="text" name="postaddress" id="username" value="<?php echo $postaddress;?>" /><?php echo $postaErr; ?></td>
             </tr>
             <tr>
-                <td>E-post: </td>
+                <td>E-post</td>
                 <td><input type="email" name="email" id="username" value="<?php echo $email;?>" /><span class="error"> * <?php echo $emailErr; ?></span></td>
             </tr>
             <tr>
-                <td>Telefon: </td>
-                <td class="field"><input type="text" name="phone" id="username"value="<?php echo $phone;?>" /></td>
+                <td>Telefon</td>
+                <td class="field"><input type="text" name="phone" id="username"value="<?php echo $phone;?>" /><?php echo $phoneErr; ?></td>
             </tr>
             <tr>
-                <td>Mobil: </td>
-                <td class="field"><input type="text" name="mobile" id="username" value="<?php echo $mobile;?>" /></td>
+                <td>Mobil</td>
+                <td class="field"><input type="text" name="mobile" id="username" value="<?php echo $mobile;?>" /><?php echo $mobileErr; ?></td>
             </tr>
             <tr>
-                <td>Skype: </td>
-                <td class="field"><input type="text" name="skype" id="username" value="<?php echo $skype;?>" /></td>
+                <td>Skype</td>
+                <td class="field"><input type="text" name="skype" id="username" value="<?php echo $skype;?>" /><?php echo $addressErr; ?></td>
             </tr>
             <tr>
                 
-                <td class="login-actions"><input type="submit" name="update" value="Uppdatera" class="button btn btn-success btn-large" /></td>
+                <td class="login-actions"><input type="submit" name="update" value="Uppdatera" class="button btn btn-success " /></td>
             </tr>
         
         </table>
@@ -180,28 +198,19 @@ $msg = "";
         
     </form> 
 <!-- Vet inte om uppladdning av bild kan ligga i uppdateringsformuläret så gör en separat för nu -->            
-    <h2>Lägg upp en bild</h2>
-    <i>Storlek max 30kB och endast jpg eller gif.</i>
+    <h3>Lägg upp en bild</h3>
+    <i>Storlek max 30kB och endast jpg eller gif.</i><br><br>
     <form action="profile.php" method="POST" enctype="multipart/form-data">
-        
-        
         <table>
-            
             <tr>
-                    <td class="bild">Bild:</td>
-                    <td><input type="file" name="upfile" value=""/></td>
+                <td class="bild">Bild:</td>
+                <td><input type="file" name="upfile" value=""/></td>
             </tr>
-        
-            
             <tr>
             <td><input type="submit" name="upload" value="Ladda upp" class="button btn btn-success"/></td>
             </tr>
-            
         </table>
-        
      </form>
-<br />
-<br />
         
     </div> <!-- class content clearfix -->
  </div> <!--class container --> 
