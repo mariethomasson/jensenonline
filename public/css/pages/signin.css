@@ -268,11 +268,13 @@ label {
 
 @media (min-width: 1px) and (max-width: 480px) {
     .footer, .footer-inner {
-        position: none;
+        position: static;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px){
-    
+    .footer, .footer-inner {
+        position: static;
+    }
 }
 
