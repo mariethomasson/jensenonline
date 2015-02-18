@@ -276,6 +276,20 @@ margin-bottom: 26px;}
     display: none;
 }
 }
+/* Maries responsive css */
+
+@media (min-width: 1px) and (max-width: 480px) {
+    #shortcutMenu {
+    display: none;
+    }   
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+    #shortcutMenu {
+    display: none;
+    } 
+}
+
 
 
 /*------------------------------------------------------------------
