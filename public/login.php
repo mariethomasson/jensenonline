@@ -123,7 +123,7 @@ if(isset($_POST["submit"])) {
             </tr>
         
             <tr >
-                <td class="login-actions"><input type="submit" name="submit" value="Logga in" class="button btn btn-success btn-large"/></td>
+                <td class="login-actions"><input type="submit" name="submit" value="Logga in" class="button btn btn-success"/></td>
             </tr>
             
         </table>

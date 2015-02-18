@@ -65,7 +65,7 @@ body{ background: url(../../img/body-bg.png); color:#236491; font: 13px/1.7em 'O
 	
 	width: 100%;
 	
-	margin-top: -1em;
+	margin-top: 1em;
 	margin-bottom: 1.25em;
 }
 
@@ -251,6 +251,7 @@ label {
 }
 
 .footer, .footer-inner {
+    margin: 0;
     position: absolute;
     bottom: 0;
     left: 0;
