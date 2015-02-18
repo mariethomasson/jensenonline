@@ -272,6 +272,9 @@ margin-bottom: 26px;}
 	.shortcuts .shortcut {
 		width: 48%;
 	}
+    #shortcutMenu {
+    display: none;
+}
 }
 
 
@@ -282,3 +285,4 @@ margin-bottom: 26px;}
 #area-chart{
 display: none;
 }
+

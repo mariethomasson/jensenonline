@@ -1,10 +1,11 @@
-<div class="span3">
+<div id="shortcutMenu">
+    <div class="span3">
           <div class="widget">
             <div class="widget-header"> <i class="icon-bookmark"></i>
               <h3>Shortcuts</h3>
-            </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
            
                 <div class="shortcuts">
                     <div> 
@@ -23,11 +24,8 @@
                     <a href="franvaro.php" class="shortcut"><i class="shortcut-icon icon-ok-sign "></i><span class="shortcut-label">Frånvaro</span> </a>
                     </div>
                  
-            </div>
-         <!-- /shortcuts-->    
-            </div>
-            <!-- /widget-content --> 
-          </div>
-          <!-- /widget -->
-        </div> 
-        <!-- /span3 -->
+            </div> <!-- /shortcuts-->    
+            </div> <!-- /widget-content --> 
+        </div> <!-- /widget -->
+    </div> <!-- /span3 -->
+</div> <!-- /shortcutMenu -->
