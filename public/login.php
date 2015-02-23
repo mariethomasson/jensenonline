@@ -20,7 +20,7 @@
         <link href="css/pages/signin.css" rel="stylesheet" type="text/css">
     </head>
 <body>
-   
+   <main>
     <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
@@ -134,7 +134,8 @@ if(isset($_POST["submit"])) {
       </div> <!-- content clearfix -->
     </div> <!-- /account-container -->   
 
-
+</main>
+<footer>
     
     
 <div class="footer">
@@ -151,7 +152,7 @@ if(isset($_POST["submit"])) {
   <!-- /footer-inner --> 
 </div>
 <!-- /footer --> 
-
+</footer>
 
     
 <script src="js/jquery-1.7.2.min.js"></script>
