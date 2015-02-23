@@ -16,7 +16,7 @@
             <div class="content clearfix">
             <h2>Lägg till kurs</h2>
             <p> <?php echo logged_in();   //if-satsen ersatt av en funktion ?></p>
-            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.</i>
+            <i>Fält markerade med en <span class="error">*</span> är obligatoriska.<br><br></i>
 
 <?php
     $class = $status = $course = $startdate = $enddate = $rating = "" ;
@@ -80,7 +80,7 @@ if(isset($_POST["submit"])){
             ));
 
                 if ($result) {
-                    $_SESSION['msg'] = "<i>Ny kurs tillagd</i><br><br>";
+                    $_SESSION['msg'] = "<i>Ny kurs tillagd</i>";
                 //header("Location: login.php");
             }else {
                  $_SESSION['msg'] = "Signup failed";
