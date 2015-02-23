@@ -307,15 +307,39 @@ include("layout/footer.php");
           editable: true,
           events: [
             {
-              title: 'Heldagsevent',
+              title: 'AJAX',
               start: new Date(y, m, 2)
+            },
+            {
+              title: 'API',
+              start: new Date(y, m, 9)
+            },
+            {
+              title: 'JS',
+              start: new Date(y, m, 16)
+            },
+            {
+              title: 'After Work!!',
+              start: new Date(y, m, 11)
+            },
+            {
+              title: '12.00 Projektmöte',
+              start: new Date(y, m, 3)
+            },
+                          {
+              title: '12.00 Projektmöte',
+              start: new Date(y, m, 10)
+            },
+                          {
+              title: '12.00 Projektmöte',
+              start: new Date(y, m, 17)
             },
             {
               title: 'Långhelg',
               start: new Date(y, m, d+5),
               end: new Date(y, m, d+7)
             },
-            {
+            /*{
               id: 999,
               title: 'Webbmöte',
               start: new Date(y, m, d-3, 16, 0),
@@ -343,7 +367,7 @@ include("layout/footer.php");
               start: new Date(y, m, d+1, 9, 0),
               end: new Date(y, m, d+1, 10, 30),
               allDay: false
-            },
+            },*/
             {
               title: 'Redovisningar',
               start: new Date(y, m, 24),
