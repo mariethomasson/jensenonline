@@ -2,27 +2,11 @@
 Bootstrap Admin Template by EGrappler.com
 ------------------------------------------------------------------*/
 
-/** MiT **/
-html {
-    height: 100%;
-}
-main {
-    height: 100%;
-    display: table-row;
-}
-/** end MiT **/
+
+
 
 /** Base Body Styles **/
-body { 
-    background: url(../../img/body-bg.png); 
-    color:#236491; 
-    font: 13px/1.7em 'Open Sans';
-/** MiT **/
-    height: 100%;
-    display: table;
-    width: 100%;
-}
-
+body{ background: url(../../img/body-bg.png); color:#236491; font: 13px/1.7em 'Open Sans';}
 
 
 .account-container {
@@ -273,7 +257,6 @@ label {
     left: 0;
     width: 100%;
     border: none;
-    display: table-row;
 
 }
 
