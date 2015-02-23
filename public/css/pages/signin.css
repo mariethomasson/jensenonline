@@ -6,7 +6,16 @@ Bootstrap Admin Template by EGrappler.com
 
 
 /** Base Body Styles **/
-body{ background: url(../../img/body-bg.png); color:#236491; font: 13px/1.7em 'Open Sans';}
+body { 
+    background: url(../../img/body-bg.png); 
+    color:#236491; 
+    font: 13px/1.7em 'Open Sans';
+/** MiT **/
+    height: 100%;
+    display: table;
+    width: 100%;
+}
+
 
 
 .account-container {
@@ -257,6 +266,7 @@ label {
     left: 0;
     width: 100%;
     border: none;
+    display: table-row;
 
 }
 
