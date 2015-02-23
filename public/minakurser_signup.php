@@ -80,7 +80,7 @@ if(isset($_POST["submit"])){
             ));
 
                 if ($result) {
-                    $_SESSION['msg'] = "Ny kurs tillagd";
+                    $_SESSION['msg'] = "<i>Ny kurs tillagd</i><br><br>";
                 //header("Location: login.php");
             }else {
                  $_SESSION['msg'] = "Signup failed";
